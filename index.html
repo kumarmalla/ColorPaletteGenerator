@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Color Palette Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Color Palette Generator</h1>
+        <p>Generate beautiful and accessible color palettes for your web projects.</p>
+    </header>
+
+    <main class="container">
+        <div class="top-row-sections">
+            <section class="controls-section">
+                <h2>1. Choose Your Base Color</h2>
+                <div class="color-input-group">
+                    <label for="colorPicker">Select Color:</label>
+                    <input type="color" id="colorPicker" value="#1a73e8">
+                    <input type="text" id="colorInput" placeholder="Hex, RGB, or HSL" value="#1a73e8">
+                </div>
+
+                <h3>Predefined Color Suggestions</h3>
+                <div class="predefined-colors">
+                    <!-- Material Design Colors -->
+                    <div class="color-swatch" data-color="#F44336" title="Red"></div>
+                    <div class="color-swatch" data-color="#E91E63" title="Pink"></div>
+                    <div class="color-swatch" data-color="#9C27B0" title="Purple"></div>
+                    <div class="color-swatch" data-color="#673AB7" title="Deep Purple"></div>
+                    <div class="color-swatch" data-color="#3F51B5" title="Indigo"></div>
+                    <div class="color-swatch" data-color="#2196F3" title="Blue"></div>
+                    <div class="color-swatch" data-color="#03A9F4" title="Light Blue"></div>
+                    <div class="color-swatch" data-color="#00BCD4" title="Cyan"></div>
+                    <div class="color-swatch" data-color="#009688" title="Teal"></div>
+                    <div class="color-swatch" data-color="#4CAF50" title="Green"></div>
+                    <div class="color-swatch" data-color="#8BC34A" title="Light Green"></div>
+                    <div class="color-swatch" data-color="#CDDC39" title="Lime"></div>
+                    <div class="color-swatch" data-color="#FFEB3B" title="Yellow"></div>
+                    <div class="color-swatch" data-color="#FFC107" title="Amber"></div>
+                    <div class="color-swatch" data-color="#FF9800" title="Orange"></div>
+                    <div class="color-swatch" data-color="#FF5722" title="Deep Orange"></div>
+                    <div class="color-swatch" data-color="#795548" title="Brown"></div>
+                    <div class="color-swatch" data-color="#9E9E9E" title="Grey"></div>
+                    <div class="color-swatch" data-color="#607D8B" title="Blue Grey"></div>
+                    <!-- Popular Brand Colors / Web Accent Colors -->
+                    <div class="color-swatch" data-color="#1DA1F2" title="Twitter Blue"></div>
+                    <div class="color-swatch" data-color="#4267B2" title="Facebook Blue"></div>
+                    <div class="color-swatch" data-color="#DB4437" title="Google Red"></div>
+                    <div class="color-swatch" data-color="#0F9D58" title="Google Green"></div>
+                    <div class="color-swatch" data-color="#F4B400" title="Google Yellow"></div>
+                    <div class="color-swatch" data-color="#4285F4" title="Google Blue"></div>
+                    <div class="color-swatch" data-color="#0A66C2" title="LinkedIn Blue"></div>
+                    <div class="color-swatch" data-color="#E60023" title="Pinterest Red"></div>
+                    <div class="color-swatch" data-color="#FF0000" title="YouTube Red"></div>
+                </div>
+            </section>
+
+            <section class="controls-section theme-section">
+                <h2>2. Choose Theme Type</h2>
+                <div class="theme-options">
+                    <label><input type="radio" name="themeType" value="monochromatic" checked> Monochromatic</label>
+                    <label><input type="radio" name="themeType" value="neutral"> Neutral</label>
+                </div>
+
+                <h2>Adjust Palette (Global)</h2>
+                <div class="slider-group">
+                    <label for="saturationSlider">Saturation Adjustment:</label>
+                    <input type="range" id="saturationSlider" min="-50" max="50" value="0">
+                    <span id="saturationValue">0%</span>
+                </div>
+                <div class="slider-group">
+                    <label for="lightnessSlider">Lightness Adjustment:</label>
+                    <input type="range" id="lightnessSlider" min="-50" max="50" value="0">
+                    <span id="lightnessValue">0%</span>
+                </div>
+                <button id="resetAdjustmentsBtn" class="action-button">Reset Adjustments</button>
+            </section>
+        </div>
+
+        <section class="palette-display-section">
+            <h2>3. Generated Color Palette</h2>
+            <div class="palette-grid" id="paletteGrid">
+                <!-- Color boxes will be dynamically inserted here -->
+            </div>
+            <button id="copyPaletteBtn" class="action-button">Copy Full Palette (CSS Variables)</button>
+
+            <div class="export-options">
+                <h3>Export Options</h3>
+                <button id="exportCssBtn" class="action-button">Export as CSS Variables</button>
+                <button id="exportJsonBtn" class="action-button">Export as JSON</button>
+            </div>
+        </section>
+
+        <section class="preview-section">
+            <h2>4. Live Website Preview</h2>
+            <div class="preview-controls">
+                <button id="togglePreviewMode" class="action-button">Toggle Dark Mode</button>
+            </div>
+            <div class="website-preview" id="websitePreview">
+                <!-- Header -->
+                <header class="preview-header">
+                    <nav class="preview-nav">
+                        <a href="#" class="nav-link">Home</a>
+                        <a href="#" class="nav-link">About</a>
+                        <a href="#" class="nav-link">Services</a>
+                        <a href="#" class="nav-link">Contact</a>
+                    </nav>
+                </header>
+
+                <!-- Main Content -->
+                <div class="preview-main-content">
+                    <aside class="preview-sidebar">
+                        <h3>Categories</h3>
+                        <ul>
+                            <li><a href="#">Category 1</a></li>
+                            <li><a href="#">Category 2</a></li>
+                            <li><a href="#">Category 3</a></li>
+                        </ul>
+                        <div class="tertiary-info-box">
+                            <h4>Tertiary Info</h4>
+                            <p>This box uses tertiary background and text colors.</p>
+                        </div>
+                    </aside>
+                    <section class="preview-content-area">
+                        <h2>Welcome to Your Website!</h2>
+                        <p>This is a live preview demonstrating how your generated color palette will look in a real-world scenario. Observe the backgrounds, text, and interactive elements.</p>
+                        <p class="tertiary-text-example">This paragraph demonstrates tertiary text color, suitable for less prominent information or captions.</p>
+                        <div class="button-group">
+                            <button class="preview-button primary">Primary Action</button>
+                            <button class="preview-button secondary">Secondary Action</button>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="preview-card">
+                                <h3>Card Title One</h3>
+                                <p>This is a sample card component. It uses the tertiary background and text colors for its main content.</p>
+                                <button class="preview-button accent">Learn More</button>
+                            </div>
+                            <div class="preview-card">
+                                <h3>Card Title Two</h3>
+                                <p>Another card to show how different elements interact with the chosen palette.</p>
+                                <button class="preview-button accent">View Details</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Footer -->
+                <footer class="preview-footer">
+                    <p>&copy; 2025 Color Palette Generator. All rights reserved.</p>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <div id="messageBox" class="message-box">
+        <p id="messageText"></p>
+        <button id="closeMessageBox">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
